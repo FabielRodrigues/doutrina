@@ -313,16 +313,8 @@ class AlunoController extends Controller
                 'parents' => $request->parents
             ]);
 
-            $parentes2 = $this->parente->create([
-                'users_id' => $request->users_id2,
-                'users_id2' => $request->users_id,
-                'parents' => $request->parents
-            ]);
-
 
             $parentes->save();
-
-            $parentes2->save();
 
             return redirect("/aluno/profile/$request->users_id")->with('status', 'Aluno vinculado ao parente com sucesso.');
 
@@ -355,7 +347,6 @@ class AlunoController extends Controller
                                   ->join('adultos', 'adultos.users_id', '=', 'users_parents.users_id2')
                                   ->join('criancas', 'criancas.users_id', '=', 'users_parents.users_id2')
                                   ->select('users.*', 'users_parents.*', 'enderecos.*', 'adultos.*', 'criancas.*')
-                                  ->groupBy('users_parents.users_id2')
                                   ->where('users_parents.users_id', $id)->get();
 
         return view('aluno/profile', compact('users', 'adultos', 'enderecos', 'cursos', 'criancas', 'parentes'));
@@ -366,6 +357,12 @@ class AlunoController extends Controller
         $this->authorize('Excluir aluno');
         $this->users->find($id)->delete();
         return redirect('aluno')->with('status', 'Aluno deletado do sistema!');
+    }
+
+    public function desvincularparent($id)
+    {
+        $this->parente->where('users_id2','=', $id)->delete();
+        return redirect()->back()->with('status', 'Parente desvinculado com sucesso!');
     }
 
     public function ajaxcurso($departamentos_id)

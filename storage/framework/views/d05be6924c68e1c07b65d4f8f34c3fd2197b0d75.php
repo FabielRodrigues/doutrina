@@ -170,11 +170,14 @@
 
                         <img class="profile-user-img img-responsive img-circle" src="<?php echo e(url('/')); ?>/uploads/avatars/<?php echo e($parente->avatar); ?>" alt="User profile picture">
 
-                        <h3 class="profile-username text-center"><?php echo e($parente->name); ?></h3>
+                        <h3 class="profile-username text-center"><a href='<?php echo e(url("aluno/profile/$parente->users_id")); ?>'><?php echo e($parente->name); ?></a></h3>
 
                         <p class="text-muted text-center"><?php echo e($parente->parents); ?></p>
 
                         <p class="text-muted text-center"><strong><?php echo e($parente->email); ?></strong></p>
+                        <p class="text-center">
+                            <a href='<?php echo e(url("aluno/desvincularparent/$parente->users_id")); ?>' class="btn btn-primary btn-sm">Desvincular parente</a>
+                        </p>
 
                     </div>
                     <!-- /.box-body -->
@@ -183,40 +186,70 @@
                 <!-- About Me Box -->
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Sobre</h3>
+                        <div class="col-xs-6">
+                            <h3 class="box-title">Sobre</h3>
+                        </div>
+                        <div class="col-xs-6 text-right">
+                            <a href='<?php echo e(url("aluno/editcontato/$parente->users_id")); ?>'>Editar</a>
+                        </div>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
 
-                            <p><strong>CPF:</strong> <?php echo e($parente->cpf); ?></p>
-                            <p><strong>Telefone:</strong> <?php echo e($parente->telefone); ?></p>
-                            <p><strong>Celular:</strong> <?php echo e($parente->celular); ?></p>
-                            <p><strong>Sexo:</strong> <?php echo e($parente->sexo); ?></p>
-                            <p><strong>Nascimento:</strong> <?php echo $parente->nascimento; ?></p>
-                            <p><strong>Formação:</strong> <?php echo e($parente->formacao); ?></p>
-                            <p><strong>Profissão:</strong> <?php echo e($parente->profissao); ?></p>
-                            <p><strong>Habilidade:</strong> <?php echo e($parente->habilidade); ?></p>
+                        <p><strong>CPF:</strong> <?php echo e($parente->cpf); ?></p>
+                        <p><strong>Telefone:</strong> <?php echo e($parente->telefone); ?></p>
+                        <p><strong>Celular:</strong> <?php echo e($parente->celular); ?></p>
+                        <p><strong>Sexo:</strong> <?php echo e($parente->sexo); ?></p>
+                        <p><strong>Nascimento:</strong> <?php echo $parente->nascimento; ?></p>
+                        <p><strong>Formação:</strong> <?php echo e($parente->formacao); ?></p>
+                        <p><strong>Profissão:</strong> <?php echo e($parente->profissao); ?></p>
+                        <p><strong>Habilidade:</strong> <?php echo e($parente->habilidade); ?></p>
 
-                        <hr>
-                        <strong><i class="fa fa-map-marker margin-r-5"></i> Endereço</strong>
-                        <hr>
+                    </div>
+
+                </div>
+
+                <div class="box box-primary">
+
+                    <div class="box-header with-border">
+                        <div class="col-xs-6">
+                            <h3 class="box-title">Endereço</h3>
+                        </div>
+                        <div class="col-xs-6 text-right">
+                            <a href='<?php echo e(url("aluno/editendereco/$parente->users_id")); ?>'>Editar</a>
+                        </div>
+                    </div>
+
+                    <div class="box-body">
+
                             <p><strong>Logradouro:</strong> <?php echo e($parente->endereco); ?></p>
                             <p><strong>Complemento:</strong> <?php echo e($parente->complemento); ?></p>
                             <p><strong>Cidade:</strong> <?php echo e($parente->cidade); ?></p>
                             <p><strong>Estado:</strong> <?php echo e($parente->estado); ?></p>
                             <p><strong>CEP:</strong> <?php echo e($parente->cep); ?></p>
 
-                        <hr>
-                        <strong><i class="fa fa-info margin-r-5"></i> Informações complementares</strong>
-                        <hr >
-                        <p><strong>Possui alguma alergia?:</strong> <?php echo e($parente->alergia); ?></p>
-                        <p><strong>Possui alguma restrição alimentar?:</strong> <?php echo e($parente->restricao); ?></p>
-                        <p><strong>Ligar pra quem em caso de emergência?</strong> <?php echo e($parente->emergencia); ?></p>
-                        <p><strong>Autorização para sair da sala?:</strong> <?php echo e($parente->autorizacao); ?></p>
-                        <p><strong>Assinou o termo de autorização?:</strong> <?php echo e($parente->termo); ?></p>
-                        <p><strong>Assinou o direito de uso de imagem?:</strong> <?php echo e($parente->direito); ?></p>
+                    </div>
 
-                        <hr>
+                </div>
+                <div class="box box-primary">
+
+                    <div class="box-header with-border">
+                        <div class="col-xs-8">
+                            <h4 class="box-title">Informações</h4>
+                        </div>
+                        <div class="col-xs-4 text-right">
+                            <a href='<?php echo e(url("aluno/editcrianca/$parente->users_id")); ?>'>Editar</a>
+                        </div>
+                    </div>
+
+                    <div class="box-body">
+
+                            <p><strong>Possui alguma alergia?:</strong> <?php echo e($parente->alergia); ?></p>
+                            <p><strong>Possui alguma restrição alimentar?:</strong> <?php echo e($parente->restricao); ?></p>
+                            <p><strong>Ligar pra quem em caso de emergência?</strong> <?php echo e($parente->emergencia); ?></p>
+                            <p><strong>Autorização para sair da sala?:</strong> <?php echo e($parente->autorizacao); ?></p>
+                            <p><strong>Assinou o termo de autorização?:</strong> <?php echo e($parente->termo); ?></p>
+                            <p><strong>Assinou o direito de uso de imagem?:</strong> <?php echo e($parente->direito); ?></p>
 
                     </div>
 

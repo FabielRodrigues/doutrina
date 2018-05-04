@@ -240,6 +240,9 @@ Route::group(['prefix' => 'aluno', 'middleware' => 'auth'], function(){
     Route::get('/destroy/{id}',
         ['as' => 'aluno/destroy',
             'uses' => 'AlunoController@destroy']);
+    Route::get('/desvincularparent/{id}',
+        ['as' => 'aluno/desvincularparent',
+            'uses' => 'AlunoController@desvincularparent']);
     Route::get('/ajaxcurso/{id}',
         ['as' => 'aluno/ajaxcurso',
             'uses' => 'AlunoController@ajaxcurso']);

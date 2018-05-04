@@ -1,4 +1,4 @@
-
+<input type="hidden" name="users_id" value="<?php echo e($id); ?>" />
 <div class="form-group<?php echo e($errors->has('endereco') ? ' has-error' : ''); ?>">
     <?php echo Form::label('Endereço'); ?>
 
